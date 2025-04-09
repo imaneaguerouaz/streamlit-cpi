@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Titre de l'application
-st.title("Évaluation Adaptative")
+st.title("Évaluation Adaptative - SVT")
 
 # Initialiser le niveau à 1 si ce n'est pas déjà fait
 if 'niveau' not in st.session_state:
@@ -10,14 +10,14 @@ if 'niveau' not in st.session_state:
 # Fonction pour poser une question en fonction du niveau
 def poser_question(niveau):
     if niveau == 1:
-        question = "Combien font 3 + 2 ?"
-        bonne_reponse = "5"
+        question = "Quelle est la fonction des racines chez une plante ?"
+        bonne_reponse = "Absorber l'eau et les nutriments"
     elif niveau == 2:
-        question = "Quel est le produit de 7 et 6 ?"
-        bonne_reponse = "42"
+        question = "Qu'est-ce que la photosynthèse ?"
+        bonne_reponse = "Le processus par lequel les plantes fabriquent leur nourriture à partir de la lumière, de l'eau et du dioxyde de carbone"
     elif niveau == 3:
-        question = "Quelle est la racine carrée de 144 ?"
-        bonne_reponse = "12"
+        question = "Quel est le rôle des globules rouges dans le sang ?"
+        bonne_reponse = "Transporter l'oxygène"
     else:
         question = "Félicitations, vous avez terminé l'évaluation ! 🎉"
         bonne_reponse = None
@@ -32,7 +32,7 @@ if question:
 
     # Vérification de la réponse lorsque l'utilisateur clique sur le bouton "Suivant"
     if reponse and st.button("Suivant"):
-        if bonne_reponse and reponse == bonne_reponse:
+        if bonne_reponse and reponse.lower() == bonne_reponse.lower():  # Comparaison insensible à la casse
             st.success("Bonne réponse ! 😊")
             st.session_state.niveau += 1  # Passer au niveau suivant
             st.write(f"Passons à la question du niveau {st.session_state.niveau}.")
